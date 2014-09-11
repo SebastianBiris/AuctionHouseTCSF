@@ -8,5 +8,6 @@ namespace AuctionHouseTCSF
 {
     class ServerMonitor
     {
+        string text;
     }
 }
