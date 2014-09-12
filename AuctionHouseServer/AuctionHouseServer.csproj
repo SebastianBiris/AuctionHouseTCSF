@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>f3fb19d2-30aa-4b88-bdcf-23faffdca2b9</ProjectGuid>
+    <ProjectGuid>{AE50D7B4-4006-4322-A463-7447EBD05B37}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>AuctionHouseServer</RootNamespace>
@@ -41,8 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Item.cs" />
+    <Compile Include="ServerMain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServerMonitor.cs" />
+    <Compile Include="ServerThreadMethods.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
