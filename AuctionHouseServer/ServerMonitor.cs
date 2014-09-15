@@ -30,7 +30,7 @@ namespace AuctionHouseServer
                 streamWriters.Remove(streamWriter);
             }
         }
-        public void BroadcastChat(string clientIpAdress, long bid)
+        public void BroadcastBid(string clientIpAdress, string bid)
         {
             string clientName = Thread.CurrentThread.Name;
             lock (this)
@@ -41,11 +41,7 @@ namespace AuctionHouseServer
                     {
                         streamWriter.WriteLine(clientIpAdress + "(" + clientName + "): " + bid);
                         streamWriter.Flush();
-                        //long max=0;
-                        // if(bid>max)
-                        // { max =bid;}
-                        // else
-                        // {Console.WriteLine}
+                     
                     }
                 }
                 catch (Exception ex)
