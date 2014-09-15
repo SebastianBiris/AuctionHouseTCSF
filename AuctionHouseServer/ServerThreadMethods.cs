@@ -43,11 +43,7 @@ namespace AuctionHouseServer
             while (true)
             {
                 bid = streamreader.ReadLine();
-                //long max=0;
-                // if(bid>max)
-                // { max =bid;}
-                // else
-                // {Console.WriteLine}
+         
                 monitor.BroadcastBid(clientIpAdressString, bid);
             }
 
