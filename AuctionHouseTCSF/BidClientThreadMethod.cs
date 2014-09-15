@@ -3,10 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace AuctionHouseTCSF
 {
     class BidClientThreadMethod
     {
+        public event BidReceived receivedBidEvent;
+
+        public void ReceivedBidInfo(object streamReaderObj)
+        {
+            string bid;
+            StreamReader streamReader = (StreamReader)streamReaderObj;
+
+            while (true)
+            {
+                try
+                { 
+                    bid = streamReader.ReadLine(); 
+                }
+                catch (IOException)
+                { 
+                    break;
+                }
+                receivedBidEvent(bid);
+
+            }
+
+
+        }
     }
 }

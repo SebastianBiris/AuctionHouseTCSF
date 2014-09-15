@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace AuctionHouseTCSF
 {
-    class BidReceived
-    {
-        public delegate void ReceivedBid(string bid);
-    }
+    
+        public delegate void BidReceived(string bid);
+    
 }
