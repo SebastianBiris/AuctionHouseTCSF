@@ -47,6 +47,7 @@ namespace AuctionHouseTCSF
             btnLogIn.IsEnabled = true;
             btnLogOut.IsEnabled = false;
             btnSubmitBid.IsEnabled = false;
+            lblBids.IsEnabled = false;
             btnLogIn.Focus();
         }
 
@@ -92,6 +93,7 @@ namespace AuctionHouseTCSF
             btnLogIn.IsEnabled = false;
             btnLogOut.IsEnabled = true;
             btnSubmitBid.IsEnabled = true;
+            lblBids.IsEnabled = true;
         }
 
         private void btnLogOut_Click(object sender, RoutedEventArgs e)
