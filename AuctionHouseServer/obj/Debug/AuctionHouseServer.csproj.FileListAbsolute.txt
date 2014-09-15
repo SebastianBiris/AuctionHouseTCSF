@@ -1,0 +1,5 @@
+C:\Users\Sebi\Documents\GitHub\AuctionHouseTCSF\AuctionHouseServer\bin\Debug\AuctionHouseServer.exe.config
+C:\Users\Sebi\Documents\GitHub\AuctionHouseTCSF\AuctionHouseServer\bin\Debug\AuctionHouseServer.exe
+C:\Users\Sebi\Documents\GitHub\AuctionHouseTCSF\AuctionHouseServer\bin\Debug\AuctionHouseServer.pdb
+C:\Users\Sebi\Documents\GitHub\AuctionHouseTCSF\AuctionHouseServer\obj\Debug\AuctionHouseServer.exe
+C:\Users\Sebi\Documents\GitHub\AuctionHouseTCSF\AuctionHouseServer\obj\Debug\AuctionHouseServer.pdb
