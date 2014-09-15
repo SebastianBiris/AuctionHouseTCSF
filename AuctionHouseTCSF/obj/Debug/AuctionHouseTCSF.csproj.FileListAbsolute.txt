@@ -2,3 +2,4 @@ c:\users\sebi\documents\visual studio 2012\Projects\AuctionHouseTCSF\AuctionHous
 C:\Users\Sebi\Documents\GitHub\AuctionHouseTCSF\AuctionHouseTCSF\bin\Debug\AuctionHouseTCSF.exe.config
 C:\Users\Chris Sousa\Documents\GitHub\AuctionHouseTCSF\AuctionHouseTCSF\bin\Debug\AuctionHouseTCSF.exe.config
 C:\Users\Kamenova\Documents\GitHub\AuctionHouseTCSF\AuctionHouseTCSF\bin\Debug\AuctionHouseTCSF.exe.config
+C:\Users\flori_000\Documents\GitHub\AuctionHouseTCSF\AuctionHouseTCSF\bin\Debug\AuctionHouseTCSF.exe.config
