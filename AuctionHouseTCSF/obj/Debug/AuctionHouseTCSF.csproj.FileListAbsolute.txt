@@ -3,3 +3,15 @@ C:\Users\Sebi\Documents\GitHub\AuctionHouseTCSF\AuctionHouseTCSF\bin\Debug\Aucti
 C:\Users\Chris Sousa\Documents\GitHub\AuctionHouseTCSF\AuctionHouseTCSF\bin\Debug\AuctionHouseTCSF.exe.config
 C:\Users\Kamenova\Documents\GitHub\AuctionHouseTCSF\AuctionHouseTCSF\bin\Debug\AuctionHouseTCSF.exe.config
 C:\Users\flori_000\Documents\GitHub\AuctionHouseTCSF\AuctionHouseTCSF\bin\Debug\AuctionHouseTCSF.exe.config
+C:\Users\Sebi\Documents\GitHub\AuctionHouseTCSF\AuctionHouseTCSF\bin\Debug\AuctionHouseTCSF.exe
+C:\Users\Sebi\Documents\GitHub\AuctionHouseTCSF\AuctionHouseTCSF\bin\Debug\AuctionHouseTCSF.pdb
+C:\Users\Sebi\Documents\GitHub\AuctionHouseTCSF\AuctionHouseTCSF\obj\Debug\AuctionHouseTCSF.csprojResolveAssemblyReference.cache
+C:\Users\Sebi\Documents\GitHub\AuctionHouseTCSF\AuctionHouseTCSF\obj\Debug\MainWindow.baml
+C:\Users\Sebi\Documents\GitHub\AuctionHouseTCSF\AuctionHouseTCSF\obj\Debug\MainWindow.g.cs
+C:\Users\Sebi\Documents\GitHub\AuctionHouseTCSF\AuctionHouseTCSF\obj\Debug\App.g.cs
+C:\Users\Sebi\Documents\GitHub\AuctionHouseTCSF\AuctionHouseTCSF\obj\Debug\AuctionHouseTCSF_MarkupCompile.cache
+C:\Users\Sebi\Documents\GitHub\AuctionHouseTCSF\AuctionHouseTCSF\obj\Debug\AuctionHouseTCSF.g.resources
+C:\Users\Sebi\Documents\GitHub\AuctionHouseTCSF\AuctionHouseTCSF\obj\Debug\AuctionHouseTCSF.Properties.Resources.resources
+C:\Users\Sebi\Documents\GitHub\AuctionHouseTCSF\AuctionHouseTCSF\obj\Debug\AuctionHouseTCSF.csproj.GenerateResource.Cache
+C:\Users\Sebi\Documents\GitHub\AuctionHouseTCSF\AuctionHouseTCSF\obj\Debug\AuctionHouseTCSF.exe
+C:\Users\Sebi\Documents\GitHub\AuctionHouseTCSF\AuctionHouseTCSF\obj\Debug\AuctionHouseTCSF.pdb
