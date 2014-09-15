@@ -15,3 +15,5 @@ C:\Users\Sebi\Documents\GitHub\AuctionHouseTCSF\AuctionHouseTCSF\obj\Debug\Aucti
 C:\Users\Sebi\Documents\GitHub\AuctionHouseTCSF\AuctionHouseTCSF\obj\Debug\AuctionHouseTCSF.csproj.GenerateResource.Cache
 C:\Users\Sebi\Documents\GitHub\AuctionHouseTCSF\AuctionHouseTCSF\obj\Debug\AuctionHouseTCSF.exe
 C:\Users\Sebi\Documents\GitHub\AuctionHouseTCSF\AuctionHouseTCSF\obj\Debug\AuctionHouseTCSF.pdb
+C:\Users\Kamenova\Documents\GitHub\AuctionHouseTCSF\AuctionHouseTCSF\obj\Debug\AuctionHouseTCSF.exe
+C:\Users\Kamenova\Documents\GitHub\AuctionHouseTCSF\AuctionHouseTCSF\obj\Debug\AuctionHouseTCSF.pdb
