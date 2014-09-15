@@ -9,7 +9,7 @@ namespace AuctionHouseTCSF
 {
     class BidClientThreadMethod
     {
-        public event BidReceived receivedBidEvent;
+        public event BidReceived ReceivedBidEvent;
 
         public void ReceivedBidInfo(object streamReaderObj)
         {
@@ -26,7 +26,7 @@ namespace AuctionHouseTCSF
                 { 
                     break;
                 }
-                receivedBidEvent(bid);
+                ReceivedBidEvent(bid);
 
             }
 
