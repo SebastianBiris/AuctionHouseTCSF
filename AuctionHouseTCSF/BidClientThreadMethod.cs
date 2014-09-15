@@ -13,14 +13,14 @@ namespace AuctionHouseTCSF
 
         public void ReceivedBidInfo(object streamReaderObj)
         {
-            string bid;
+            long bid;
             StreamReader streamReader = (StreamReader)streamReaderObj;
 
             while (true)
             {
                 try
                 { 
-                    bid = streamReader.ReadLine(); 
+                    bid = streamReader.Read(); 
                 }
                 catch (IOException)
                 { 
