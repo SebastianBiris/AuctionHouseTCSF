@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace AuctionHouseTCSF
 {
     class BidReceived
-    {//is it woking?
+    {
+        public delegate void ReceivedBid(string bid);
     }
 }
