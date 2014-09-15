@@ -11,7 +11,7 @@ namespace AuctionHouseServer
 {
     class ServerMain
     {
-        private const int PORT = 8000;
+        private const int PORT = 5000;
         static void Main(string[] args)
         {
             IPEndPoint port;
