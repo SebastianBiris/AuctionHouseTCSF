@@ -43,7 +43,10 @@ namespace AuctionHouseServer
             while (true)
             {
                 bid = streamreader.ReadLine();
-         
+                if (bid == null)
+                {
+                    break;
+                }
                 monitor.BroadcastBid(clientIpAdressString, bid);
             }
 

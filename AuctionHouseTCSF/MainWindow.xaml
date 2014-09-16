@@ -12,7 +12,7 @@
         <Label x:Name="lblStartPrice" Content="" HorizontalAlignment="Left" Margin="315,184,0,0" VerticalAlignment="Top" Width="78"/>
         <Label x:Name="lblSoldTo" Content="" HorizontalAlignment="Left" Margin="377,450,0,0" VerticalAlignment="Top" Width="175"/>
         <Label Content="Upcoming Items " HorizontalAlignment="Left" Margin="572,158,0,0" VerticalAlignment="Top" Width="118"/>
-        <ListView x:Name="lvUpcomingItems" HorizontalAlignment="Left" Height="180" Margin="562,184,0,0" VerticalAlignment="Top" Width="165">
+        <ListView x:Name="lvUpcomingItems" HorizontalAlignment="Left" Height="180" Margin="510,184,0,0" VerticalAlignment="Top" Width="217">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Item " DisplayMemberBinding="{Binding Item}"/>
@@ -20,9 +20,9 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Label Content="Make a bid" HorizontalAlignment="Left" Margin="300,262,0,0" VerticalAlignment="Top" Width="77"/>
-        <TextBox x:Name="txtBidMaking" HorizontalAlignment="Left" Height="23" Margin="382,265,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="98"/>
-        <Button x:Name="btnSubmitBid" Content="Submit Bid" HorizontalAlignment="Left" Margin="360,320,0,0" VerticalAlignment="Top" Width="120" Height="29" Click="btnSubmitBid_Click"/>
+        <Label Content="Make a bid" HorizontalAlignment="Left" Margin="279,262,0,0" VerticalAlignment="Top" Width="77"/>
+        <TextBox x:Name="txtBidMaking" HorizontalAlignment="Left" Height="23" Margin="361,265,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="98"/>
+        <Button x:Name="btnSubmitBid" Content="Submit Bid" HorizontalAlignment="Left" Margin="339,319,0,0" VerticalAlignment="Top" Width="120" Height="29" Click="btnSubmitBid_Click"/>
         <Button x:Name="btnLogIn" Content="Log in" HorizontalAlignment="Left" Margin="51,94,0,0" VerticalAlignment="Top" Width="75" Click="btnLogIn_Click"/>
         <Button x:Name="btnLogOut" Content="Log out" HorizontalAlignment="Left" Margin="601,94,0,0" VerticalAlignment="Top" Width="75" Click="btnLogOut_Click"/>
         <Label x:Name="lblBids" Content="" HorizontalAlignment="Left" Margin="10,265,0,0" VerticalAlignment="Top" Width="252" Height="211" Background="#FFF3FFFA"/>
