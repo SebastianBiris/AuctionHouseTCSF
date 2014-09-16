@@ -39,7 +39,7 @@ namespace AuctionHouseTCSF
         public MainWindow()
         {
             InitializeComponent();
-            serverAddress = new IPEndPoint(IPAddress.Parse("127.0.0.5"), PORT);
+            serverAddress = new IPEndPoint(IPAddress.Parse("10.140.81.209"), PORT);
             myBidClientThreadMethod = new BidClientThreadMethod();
             myBidClientThreadMethod.ReceivedBidEvent += new BidReceived(BidReceivedHandler);
             myBidder = new List<Bidder>();

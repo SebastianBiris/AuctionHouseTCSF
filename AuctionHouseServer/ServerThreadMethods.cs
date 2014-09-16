@@ -38,7 +38,7 @@ namespace AuctionHouseServer
             Thread.CurrentThread.Name = ip.HostName;
 
             this.monitor.AddClients(streamwriter);
-           // this.monitor.BroadcastBid(clientIpAdressString, "joined");
+            this.monitor.BroadcastBid(clientIpAdressString, "joined");
 
             while (true)
             {
@@ -51,7 +51,7 @@ namespace AuctionHouseServer
             }
 
             monitor.RemoveClients(streamwriter);
-          //  monitor.BroadcastBid(clientIpAdressString, "Logged out");
+            monitor.BroadcastBid(clientIpAdressString, "Logged out");
             streamwriter.Close();
             streamreader.Close();
             networkStream.Close();
