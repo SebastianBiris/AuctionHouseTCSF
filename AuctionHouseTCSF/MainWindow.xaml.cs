@@ -16,7 +16,7 @@ using System.IO;
 using System.Threading;
 using System.Net;
 using System.Net.Sockets;
-using System.ComponentModel;
+//using System.ComponentModel;
 
 namespace AuctionHouseTCSF
 {
@@ -35,7 +35,7 @@ namespace AuctionHouseTCSF
         Thread receiveBidThread;
         List<Bidder> myBidder;
 
-        private delegate void bidReceivedDelegate(long bid);
+        private delegate void bidReceivedDelegate(string bid);
         public MainWindow()
         {
             InitializeComponent();
@@ -47,18 +47,18 @@ namespace AuctionHouseTCSF
             btnLogIn.IsEnabled = true;
             btnLogOut.IsEnabled = false;
             btnSubmitBid.IsEnabled = false;
-            lblBids.IsEnabled = false;
+            txtBids.IsEnabled = false;
             btnLogIn.Focus();
         }
 
-        public void BidReceivedHandler(long bid)
+        public void BidReceivedHandler(string bid)
         {
 
-            lblBids.Dispatcher.Invoke(new bidReceivedDelegate(BidReceivedInvoke), bid);
+            txtBids.Dispatcher.Invoke(new bidReceivedDelegate(BidReceivedInvoke), bid);
         }
-        public void BidReceivedInvoke(long bid)
+        public void BidReceivedInvoke(string bid)
         {
-            lblBids.Content += bid + "\r\n";
+            txtBids.Items.Add( bid);// +"\r\n";
 
         }
 
@@ -93,7 +93,7 @@ namespace AuctionHouseTCSF
             btnLogIn.IsEnabled = false;
             btnLogOut.IsEnabled = true;
             btnSubmitBid.IsEnabled = true;
-            lblBids.IsEnabled = true;
+            txtBids.IsEnabled = true;
         }
 
         private void btnLogOut_Click(object sender, RoutedEventArgs e)
@@ -105,7 +105,7 @@ namespace AuctionHouseTCSF
             socket.Close();
 
             receiveBidThread.Join();
-            lblBids.Content += "\r\nI am leaving the auction";
+            txtBids.Items.Add("\r\nI am leaving the auction");
 
             txtBidMaking.IsEnabled = false;
             txtBidMaking.Text = "";

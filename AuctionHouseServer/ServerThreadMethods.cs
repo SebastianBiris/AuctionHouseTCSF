@@ -34,11 +34,11 @@ namespace AuctionHouseServer
 
             IPAddress clientIpAdress = ((IPEndPoint)this.socketToTheClient.RemoteEndPoint).Address;
             clientIpAdressString = clientIpAdress.ToString();
-            IPHostEntry ip = Dns.GetHostEntry(clientIpAdress);
+            IPHostEntry ip = Dns.GetHostEntry(clientIpAdressString);
             Thread.CurrentThread.Name = ip.HostName;
 
             this.monitor.AddClients(streamwriter);
-            this.monitor.BroadcastBid(clientIpAdressString, "joined");
+           // this.monitor.BroadcastBid(clientIpAdressString, "joined");
 
             while (true)
             {
@@ -51,7 +51,7 @@ namespace AuctionHouseServer
             }
 
             monitor.RemoveClients(streamwriter);
-            monitor.BroadcastBid(clientIpAdressString, "Logged out");
+          //  monitor.BroadcastBid(clientIpAdressString, "Logged out");
             streamwriter.Close();
             streamreader.Close();
             networkStream.Close();

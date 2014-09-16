@@ -25,8 +25,8 @@
         <Button x:Name="btnSubmitBid" Content="Submit Bid" HorizontalAlignment="Left" Margin="339,319,0,0" VerticalAlignment="Top" Width="120" Height="29" Click="btnSubmitBid_Click"/>
         <Button x:Name="btnLogIn" Content="Log in" HorizontalAlignment="Left" Margin="51,94,0,0" VerticalAlignment="Top" Width="75" Click="btnLogIn_Click"/>
         <Button x:Name="btnLogOut" Content="Log out" HorizontalAlignment="Left" Margin="601,94,0,0" VerticalAlignment="Top" Width="75" Click="btnLogOut_Click"/>
-        <Label x:Name="lblBids" Content="" HorizontalAlignment="Left" Margin="10,265,0,0" VerticalAlignment="Top" Width="252" Height="211" Background="#FFF3FFFA"/>
         <Label Content="Last Bids" HorizontalAlignment="Left" Margin="10,234,0,0" VerticalAlignment="Top" Width="100"/>
+        <ListBox x:Name="txtBids" HorizontalAlignment="Left" Height="247" Margin="10,265,0,0" VerticalAlignment="Top" Width="264"/>
 
     </Grid>
 </Window>

@@ -9,9 +9,9 @@ namespace AuctionHouseTCSF
     class Bidder
     {
         private string name;
-        private long bid;
+        private string bid;
 
-        public long Bid
+        public string Bid
         {
             get { return bid; }
             set { bid = value; }
@@ -22,7 +22,7 @@ namespace AuctionHouseTCSF
             set { name = value; }
         }
        
-        public Bidder(string name, long bid)
+        public Bidder(string name, string bid)
         {
             this.name = name;
             this.bid = bid;

@@ -3,3 +3,9 @@ C:\Users\Sebi\Documents\GitHub\AuctionHouseTCSF\AuctionHouseServer\bin\Debug\Auc
 C:\Users\Sebi\Documents\GitHub\AuctionHouseTCSF\AuctionHouseServer\bin\Debug\AuctionHouseServer.pdb
 C:\Users\Sebi\Documents\GitHub\AuctionHouseTCSF\AuctionHouseServer\obj\Debug\AuctionHouseServer.exe
 C:\Users\Sebi\Documents\GitHub\AuctionHouseTCSF\AuctionHouseServer\obj\Debug\AuctionHouseServer.pdb
+C:\Users\flori_000\Documents\GitHub\AuctionHouseTCSF\AuctionHouseServer\bin\Debug\AuctionHouseServer.exe.config
+C:\Users\flori_000\Documents\GitHub\AuctionHouseTCSF\AuctionHouseServer\bin\Debug\AuctionHouseServer.exe
+C:\Users\flori_000\Documents\GitHub\AuctionHouseTCSF\AuctionHouseServer\bin\Debug\AuctionHouseServer.pdb
+C:\Users\flori_000\Documents\GitHub\AuctionHouseTCSF\AuctionHouseServer\obj\Debug\AuctionHouseServer.exe
+C:\Users\flori_000\Documents\GitHub\AuctionHouseTCSF\AuctionHouseServer\obj\Debug\AuctionHouseServer.pdb
+C:\Users\flori_000\Documents\GitHub\AuctionHouseTCSF\AuctionHouseServer\obj\Debug\AuctionHouseServer.csprojResolveAssemblyReference.cache
