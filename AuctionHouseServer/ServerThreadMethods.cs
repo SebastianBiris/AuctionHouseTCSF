@@ -48,17 +48,32 @@ namespace AuctionHouseServer
            streamwriter.WriteLine(tv.CurrPrice);
             this.monitor.AddClients(streamwriter);
             this.monitor.BroadcastBid(clientIpAdressString, "joined");
-            
+
 
             while (true)
             {
+                int currentBid = 0;
                 bid = streamreader.ReadLine();
-                if (bid == null)
+
+                if (int.TryParse(bid,out currentBid)) 
                 {
-                    break;
+                    if (currentBid > tv.CurrPrice)
+                    {
+                        tv.CurrPrice = currentBid;
+                        streamwriter.WriteLine(tv.CurrPrice); 
+                        monitor.BroadcastBid(clientIpAdressString, bid);
+                    }
+                    else
+                    {
+                        streamwriter.WriteLine("Invalid Bid. Must be larger than the Highest bid");
+                    }
                 }
-                monitor.BroadcastBid(clientIpAdressString, bid);
-                Console.WriteLine(clientIpAdressString + "  " + bid);
+                else
+                    {
+                        streamwriter.WriteLine("Invalid Bid. Must enter digits only");
+                    }
+                
+                Console.WriteLine(Thread.CurrentThread.Name + "  " + bid);
             }
 
             monitor.RemoveClients(streamwriter);
@@ -66,8 +81,7 @@ namespace AuctionHouseServer
             streamwriter.Close();
             streamreader.Close();
             networkStream.Close();
-
-
+            
         }
         private static string GetMachineNameFromIPAddress(string ipAdress)
         {

@@ -69,6 +69,8 @@ namespace AuctionHouseTCSF
             streamWriter.WriteLine(txtBidMaking.Text);
             streamWriter.Flush();
             txtBidMaking.Text = "";
+            itemCurrPrice = streamReader.ReadLine();
+            lblHighestBid.Content = itemCurrPrice;
         }
 
         private void btnLogIn_Click(object sender, RoutedEventArgs e)
@@ -102,6 +104,7 @@ namespace AuctionHouseTCSF
             lblItemName.Content = itemName;
             lblStartPrice.Content = itemPrice;
             lblHighestBid.Content = itemCurrPrice;
+            
         }
 
         private void btnLogOut_Click(object sender, RoutedEventArgs e)

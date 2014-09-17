@@ -28,7 +28,7 @@
         <Label Content="Last Bids" HorizontalAlignment="Left" Margin="10,234,0,0" VerticalAlignment="Top" Width="100"/>
         <ListBox x:Name="txtBids" HorizontalAlignment="Left" Height="247" Margin="10,265,0,0" VerticalAlignment="Top" Width="264"/>
         <Label Content="Highest Bid :" HorizontalAlignment="Left" Margin="229,215,0,0" VerticalAlignment="Top" Width="77" RenderTransformOrigin="0.461,1.988"/>
-        <Label x:Name="lblHighestBid" Content="" HorizontalAlignment="Left" Margin="315,215,0,0" VerticalAlignment="Top" Width="78"/>
+        <Label x:Name="lblHighestBid" Content="" HorizontalAlignment="Left" Margin="315,215,0,0" VerticalAlignment="Top" Width="182"/>
 
     </Grid>
 </Window>

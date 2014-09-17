@@ -39,7 +39,7 @@ namespace AuctionHouseServer
                 {
                     foreach (StreamWriter streamWriter in streamWriters)
                     {
-                        streamWriter.WriteLine(clientIpAdress + "(" + clientName + "): " + bid);
+                        streamWriter.WriteLine( "(" + clientName + "): " + bid);
                         streamWriter.Flush();
                      
                     }
