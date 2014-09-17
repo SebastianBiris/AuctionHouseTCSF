@@ -49,19 +49,21 @@ namespace AuctionHouseServer
             this.monitor.AddClients(streamwriter);
             this.monitor.BroadcastBid(clientIpAdressString, "joined");
 
-
             while (true)
             {
                 int currentBid = 0;
                 bid = streamreader.ReadLine();
-
+               
+                if (bid == null)
+                    break;
+              
                 if (int.TryParse(bid,out currentBid)) 
                 {
                     if (currentBid > tv.CurrPrice)
                     {
                         tv.CurrPrice = currentBid;
-                      //  streamwriter.WriteLine(tv.CurrPrice); 
-                        monitor.BroadcastBid(Thread.CurrentThread.Name, bid);
+                       // streamwriter.WriteLine(tv.CurrPrice);
+                        monitor.BroadcastBid(Thread.CurrentThread.Name, bid + " Kr.");
                     }
                     else
                     {
@@ -70,16 +72,17 @@ namespace AuctionHouseServer
                     }
                 }
                 else
-                    {
-                        streamwriter.WriteLine("Sever says: Invalid Bid. Must enter digits only");
-                        streamwriter.Flush();
+                {
+                    streamwriter.WriteLine("Sever says: Invalid Bid. Must enter digits only");
+                    streamwriter.Flush();
                     }
                 
                 Console.WriteLine(Thread.CurrentThread.Name + "  " + bid);
             }
 
             monitor.RemoveClients(streamwriter);
-            monitor.BroadcastBid(clientIpAdressString, "Logged out");
+            monitor.BroadcastBid(Thread.CurrentThread.Name, "Logged out");
+            Console.WriteLine("Connection to client closing down...\n");
             streamwriter.Close();
             streamreader.Close();
             networkStream.Close();

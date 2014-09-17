@@ -39,13 +39,22 @@ namespace AuctionHouseServer
                 {
                     foreach (StreamWriter streamWriter in streamWriters)
                     {
-                        streamWriter.WriteLine( "(" + clientName + "): " + bid);
+                        streamWriter.WriteLine( "(" + clientName + "): " + bid );
                         streamWriter.Flush();
                      
                     }
                 }
                 catch (Exception ex)
                 { Console.WriteLine(ex.ToString()); }
+            }
+        }
+
+        public void NewHighestBid(int currentBid, int highestBid)
+        {
+            lock (this)
+            {
+               
+              
             }
         }
     }
