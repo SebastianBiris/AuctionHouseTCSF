@@ -20,6 +20,7 @@ namespace AuctionHouseServer
             this.socketToTheClient = socketToTheClient;
             this.monitor = monitor;
         }
+
         public void HandleClient()
         {
             string bid ;
@@ -27,6 +28,7 @@ namespace AuctionHouseServer
             StreamReader streamreader;
             StreamWriter streamwriter;
             string clientIpAdressString;
+            string clientName;
 
             //List<Item> items = new List<Item>();
             Item tv = new Item("TV Flatscreen", 1200, 1200);
@@ -38,8 +40,8 @@ namespace AuctionHouseServer
 
             IPAddress clientIpAdress = ((IPEndPoint)this.socketToTheClient.RemoteEndPoint).Address;
             clientIpAdressString = clientIpAdress.ToString();
-           // IPHostEntry ip = Dns.GetHostEntry(clientIpAdressString);
-           // Thread.CurrentThread.Name = ip.HostName;
+            clientName = GetMachineNameFromIPAddress(clientIpAdressString);
+            Thread.CurrentThread.Name = clientName;
 
             streamwriter.WriteLine(tv.Name);
            streamwriter.WriteLine(tv.StartPrice);
@@ -66,6 +68,21 @@ namespace AuctionHouseServer
             networkStream.Close();
 
 
+        }
+        private static string GetMachineNameFromIPAddress(string ipAdress)
+        {
+            string machineName = string.Empty;
+            try
+            {
+                IPHostEntry hostEntry = Dns.GetHostEntry(ipAdress);
+
+                machineName = hostEntry.HostName;
+            }
+            catch (Exception ex)
+            {
+                // Machine not found...
+            }
+            return machineName;
         }
         
     }
