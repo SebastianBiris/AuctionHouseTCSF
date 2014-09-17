@@ -28,17 +28,25 @@ namespace AuctionHouseServer
             StreamWriter streamwriter;
             string clientIpAdressString;
 
+            //List<Item> items = new List<Item>();
+            Item tv = new Item("TV Flatscreen", 1200, 1200);
+            //  items.Add(tv);
+
             networkStream = new NetworkStream(this.socketToTheClient);
             streamreader = new StreamReader(networkStream);
             streamwriter = new StreamWriter(networkStream);
 
             IPAddress clientIpAdress = ((IPEndPoint)this.socketToTheClient.RemoteEndPoint).Address;
             clientIpAdressString = clientIpAdress.ToString();
-            IPHostEntry ip = Dns.GetHostEntry(clientIpAdressString);
-            Thread.CurrentThread.Name = ip.HostName;
+           // IPHostEntry ip = Dns.GetHostEntry(clientIpAdressString);
+           // Thread.CurrentThread.Name = ip.HostName;
 
+            streamwriter.WriteLine(tv.Name);
+           streamwriter.WriteLine(tv.StartPrice);
+           streamwriter.WriteLine(tv.CurrPrice);
             this.monitor.AddClients(streamwriter);
             this.monitor.BroadcastBid(clientIpAdressString, "joined");
+            
 
             while (true)
             {
@@ -48,6 +56,7 @@ namespace AuctionHouseServer
                     break;
                 }
                 monitor.BroadcastBid(clientIpAdressString, bid);
+                Console.WriteLine(clientIpAdressString + "  " + bid);
             }
 
             monitor.RemoveClients(streamwriter);

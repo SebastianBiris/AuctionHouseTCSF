@@ -33,7 +33,8 @@ namespace AuctionHouseTCSF
         IPEndPoint serverAddress;
         BidClientThreadMethod myBidClientThreadMethod;
         Thread receiveBidThread;
-        List<Bidder> myBidder;
+
+        private object itemName, itemPrice, itemCurrPrice; //new
 
         private delegate void bidReceivedDelegate(string bid);
         public MainWindow()
@@ -42,7 +43,8 @@ namespace AuctionHouseTCSF
             serverAddress = new IPEndPoint(IPAddress.Parse("10.140.81.209"), PORT);
             myBidClientThreadMethod = new BidClientThreadMethod();
             myBidClientThreadMethod.ReceivedBidEvent += new BidReceived(BidReceivedHandler);
-            myBidder = new List<Bidder>();
+           
+
             txtBidMaking.IsEnabled = false;
             btnLogIn.IsEnabled = true;
             btnLogOut.IsEnabled = false;
@@ -85,6 +87,9 @@ namespace AuctionHouseTCSF
             networkStream = new NetworkStream(socket);
             streamReader = new StreamReader(networkStream);
             streamWriter = new StreamWriter(networkStream);
+            itemName = streamReader.ReadLine(); //new
+            itemPrice = streamReader.ReadLine();
+            itemCurrPrice = streamReader.ReadLine();
 
             receiveBidThread = new Thread(new ParameterizedThreadStart(myBidClientThreadMethod.ReceivedBidInfo));
             receiveBidThread.Start(streamReader);
@@ -94,6 +99,9 @@ namespace AuctionHouseTCSF
             btnLogOut.IsEnabled = true;
             btnSubmitBid.IsEnabled = true;
             txtBids.IsEnabled = true;
+            lblItemName.Content = itemName;
+            lblStartPrice.Content = itemPrice;
+            lblHighestBid.Content = itemCurrPrice;
         }
 
         private void btnLogOut_Click(object sender, RoutedEventArgs e)
