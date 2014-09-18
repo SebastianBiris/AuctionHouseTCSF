@@ -40,7 +40,7 @@ namespace AuctionHouseTCSF
         public MainWindow()
         {
             InitializeComponent();
-            serverAddress = new IPEndPoint(IPAddress.Parse("10.140.81.209"), PORT);
+            serverAddress = new IPEndPoint(IPAddress.Parse("127.0.0.1"), PORT);
             myBidClientThreadMethod = new BidClientThreadMethod();
             myBidClientThreadMethod.ReceivedBidEvent += new BidReceived(BidReceivedHandler);
            
@@ -61,7 +61,21 @@ namespace AuctionHouseTCSF
         public void BidReceivedInvoke(string bid)
         {
             txtBids.Items.Add( bid);// +"\r\n";
-            lblHighestBid.Content = bid;
+
+            string a = bid;
+            string b = string.Empty;
+            int val=0;
+
+            for (int i = 0; i < a.Length; i++)
+            {
+                if (Char.IsDigit(a[i]))
+                    b += a[i];
+            }
+
+            if (b.Length > 0)
+                val = int.Parse(b);
+            if (val != 0)
+            { lblHighestBid.Content = val; }
         }
 
         private void btnSubmitBid_Click(object sender, RoutedEventArgs e)

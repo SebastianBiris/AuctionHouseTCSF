@@ -14,6 +14,7 @@ namespace AuctionHouseServer
     {
         private Socket socketToTheClient;
         private ServerMonitor monitor;
+       
 
         public ServerThreadMethods(Socket socketToTheClient,ServerMonitor monitor)
         {
@@ -29,6 +30,7 @@ namespace AuctionHouseServer
             StreamWriter streamwriter;
             string clientIpAdressString;
             string clientName;
+            
 
             //List<Item> items = new List<Item>();
             Item tv = new Item("TV Flatscreen", 1200, 1200);
@@ -63,6 +65,8 @@ namespace AuctionHouseServer
                     {
                         tv.CurrPrice = monitor.NewHighestBid(currentBid);
                         monitor.BroadcastBid(Thread.CurrentThread.Name, bid + " Kr.");
+                       
+                       // monitor.Gavel(currentBid);
                     }
                     else
                     {

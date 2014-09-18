@@ -11,6 +11,8 @@ namespace AuctionHouseServer
     {
         private List<StreamWriter> streamWriters;
         private int highestBid;
+        private object door;
+        int count = 0;
         public ServerMonitor()
         {
             streamWriters = new List<StreamWriter>();
@@ -57,6 +59,36 @@ namespace AuctionHouseServer
                 highestBid = currentBid;
             }
             return highestBid;
+        }
+        public void Gavel(int currBid)
+        {
+
+            lock (this)
+            {
+              
+                    try
+                    {
+                        foreach (StreamWriter streamWriter in streamWriters)
+                        {
+                            Thread.Sleep(3000);
+                            streamWriter.WriteLine("First");
+                            streamWriter.Flush();
+                            Thread.Sleep(3000);
+                            streamWriter.WriteLine("Second");
+                            streamWriter.Flush();
+                            Thread.Sleep(3000);
+                            streamWriter.WriteLine("Third");
+                            streamWriter.WriteLine("Sold to: " + Thread.CurrentThread.Name+ " for "+currBid);
+                            streamWriter.Flush();
+                        }
+                    }
+
+                    catch (Exception ex)
+                    { Console.WriteLine(ex); }
+
+                
+              
+            }
         }
     }
 }
