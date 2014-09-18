@@ -10,10 +10,11 @@ namespace AuctionHouseServer
     class ServerMonitor
     {
         private List<StreamWriter> streamWriters;
-
+        private int highestBid;
         public ServerMonitor()
         {
             streamWriters = new List<StreamWriter>();
+            highestBid = 0;
         }
 
         public void AddClients(StreamWriter streamWriter)
@@ -49,13 +50,13 @@ namespace AuctionHouseServer
             }
         }
 
-        public void NewHighestBid(int currentBid, int highestBid)
+        public int NewHighestBid(int currentBid)
         {
             lock (this)
             {
-               
-              
+                highestBid = currentBid;
             }
+            return highestBid;
         }
     }
 }

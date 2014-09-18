@@ -56,13 +56,12 @@ namespace AuctionHouseServer
                
                 if (bid == null)
                     break;
-              
+                    
                 if (int.TryParse(bid,out currentBid)) 
                 {
                     if (currentBid > tv.CurrPrice)
                     {
-                        tv.CurrPrice = currentBid;
-                       // streamwriter.WriteLine(tv.CurrPrice);
+                        tv.CurrPrice = monitor.NewHighestBid(currentBid);
                         monitor.BroadcastBid(Thread.CurrentThread.Name, bid + " Kr.");
                     }
                     else
@@ -75,7 +74,8 @@ namespace AuctionHouseServer
                 {
                     streamwriter.WriteLine("Sever says: Invalid Bid. Must enter digits only");
                     streamwriter.Flush();
-                    }
+                }
+                   
                 
                 Console.WriteLine(Thread.CurrentThread.Name + "  " + bid);
             }
