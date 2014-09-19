@@ -13,7 +13,7 @@ namespace AuctionHouseServer
     {
         private const int PORT = 5000;
         static void Main(string[] args)
-        {
+        {   
             IPEndPoint port;
             Thread clientThread;
             ServerThreadMethods serverThreadMethod;
@@ -31,7 +31,7 @@ namespace AuctionHouseServer
             {
                 Console.WriteLine("Waiting for a client .....");
                 socketToTheClient = listener.Accept();
-                Console.WriteLine("New Client Joined ");
+                Console.WriteLine("New Client Joined "+Thread.CurrentThread.Name);
                 serverThreadMethod = new ServerThreadMethods(socketToTheClient, monitor);
                 clientThread = new Thread(new ThreadStart(serverThreadMethod.HandleClient));
                 clientThread.Start();

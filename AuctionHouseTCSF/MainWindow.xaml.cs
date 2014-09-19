@@ -33,6 +33,7 @@ namespace AuctionHouseTCSF
         IPEndPoint serverAddress;
         BidClientThreadMethod myBidClientThreadMethod;
         Thread receiveBidThread;
+        string name;
 
         private object itemName, itemPrice, itemCurrPrice; //new
 
@@ -64,7 +65,8 @@ namespace AuctionHouseTCSF
 
             string a = bid;
             string b = string.Empty;
-            int val=0;
+            int val = 0;
+            int c = 0;
 
             for (int i = 0; i < a.Length; i++)
             {
@@ -128,9 +130,9 @@ namespace AuctionHouseTCSF
             networkStream.Close();
             socket.Shutdown(SocketShutdown.Both);
             socket.Close();
-
+            txtBids.Items.Add(name +" has left the auction");
             receiveBidThread.Join();
-            txtBids.Items.Add("\r\nI am leaving the auction");
+           
 
             txtBidMaking.IsEnabled = false;
             txtBidMaking.Text = "";

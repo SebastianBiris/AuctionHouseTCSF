@@ -13,6 +13,9 @@ namespace AuctionHouseServer
         private int highestBid;
         private object door;
         int count = 0;
+        TimeSpan bidTime;
+
+
         public ServerMonitor()
         {
             streamWriters = new List<StreamWriter>();
@@ -42,9 +45,26 @@ namespace AuctionHouseServer
                 {
                     foreach (StreamWriter streamWriter in streamWriters)
                     {
-                        streamWriter.WriteLine( "(" + clientName + "): " + bid );
+                        streamWriter.WriteLine("(" + clientName + "): " + bid);
                         streamWriter.Flush();
-                     
+
+                    }
+                }
+                catch (Exception ex)
+                { Console.WriteLine(ex.ToString()); }
+            }
+        }
+        public void BroadcastGavel(string state )
+        { 
+            lock (this)
+            {
+                try
+                {
+                    foreach (StreamWriter streamWriter in streamWriters)
+                    {
+                        streamWriter.WriteLine( state  );
+                        streamWriter.Flush();
+
                     }
                 }
                 catch (Exception ex)
@@ -54,41 +74,84 @@ namespace AuctionHouseServer
 
         public int NewHighestBid(int currentBid)
         {
+            //int currentBid = 0;
+            //int.TryParse(bid, out currentBid);
+            //highestBid = currentBid;
             lock (this)
             {
-                highestBid = currentBid;
+                if (currentBid == highestBid)
+                {
+                    Monitor.Wait(this.door, 8000);
+                }
+                if (currentBid < highestBid)
+                {
+                    Monitor.PulseAll(this.door);
+                }
+                return currentBid;
             }
-            return highestBid;
+
         }
-        public void Gavel(int currBid)
-        {
 
-            lock (this)
-            {
-              
-                    try
-                    {
-                        foreach (StreamWriter streamWriter in streamWriters)
-                        {
-                            Thread.Sleep(3000);
-                            streamWriter.WriteLine("First");
-                            streamWriter.Flush();
-                            Thread.Sleep(3000);
-                            streamWriter.WriteLine("Second");
-                            streamWriter.Flush();
-                            Thread.Sleep(3000);
-                            streamWriter.WriteLine("Third");
-                            streamWriter.WriteLine("Sold to: " + Thread.CurrentThread.Name+ " for "+currBid);
-                            streamWriter.Flush();
-                        }
-                    }
+       
 
-                    catch (Exception ex)
-                    { Console.WriteLine(ex); }
+        //public string Gavel(int currBid)
+        //{
 
-                
-              
-            }
-        }
+        //    lock (this.door)
+        //    {
+
+        //        if (highestBid == currBid)
+        //        {
+
+        //            Monitor.Wait(this.door, 3000);
+                    
+        //        }
+        //        if (currBid > highestBid)
+        //        {
+        //            Monitor.PulseAll(this.door);
+        //        }
+
+        //    }
+        //     return "First";
+        //}
+        //public string Gavel2(int currBid)
+        //{
+
+        //    lock (this.door)
+        //    {
+
+        //        if (highestBid == currBid)
+        //        {
+
+        //            Monitor.Wait(this.door, 3000);
+                    
+        //        }
+        //        if (currBid > highestBid)
+        //        {
+        //            Monitor.PulseAll(this.door);
+        //        }
+        //       return "Second";
+        //    }
+        //}
+        //public string Gavel3(int currBid)
+        //{
+
+        //    lock (this)
+        //    {
+
+        //       if (highestBid == currBid)
+        //        {
+
+        //            Monitor.Wait(this, 3000);                   
+        //        }
+        //        if (currBid > highestBid)
+        //        {
+        //            Monitor.PulseAll(this);
+
+        //        }
+        //        return "Third.Sold to:" + Thread.CurrentThread.Name + " for " + currBid;
+        //    }
+        //}
     }
 }
+

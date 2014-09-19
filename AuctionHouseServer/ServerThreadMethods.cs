@@ -6,6 +6,7 @@ using System.Threading;
 using System.Net;
 using System.Net.Sockets;
 using System.IO;
+using System.Diagnostics;
 
 
 namespace AuctionHouseServer
@@ -14,17 +15,45 @@ namespace AuctionHouseServer
     {
         private Socket socketToTheClient;
         private ServerMonitor monitor;
-       
+      
 
-        public ServerThreadMethods(Socket socketToTheClient,ServerMonitor monitor)
+        
+
+
+        public ServerThreadMethods(Socket socketToTheClient, ServerMonitor monitor)
         {
             this.socketToTheClient = socketToTheClient;
             this.monitor = monitor;
         }
+        public void startGavel(TimeSpan timeNow)
+        {
+              string state1 = "First";
+              string state2 = "Second";
+              string state3 = "Third. Sold to " + Thread.CurrentThread.Name;
+            Thread.Sleep(3000);
+            if (timeNow == bidTime)
+            {
+                monitor.BroadcastGavel(state1);
+                Thread.Sleep(3000);
+                if (timeNow == bidTime)
+                {
+                    monitor.BroadcastGavel(state2);
+
+                    Thread.Sleep(3000);
+                    if (timeNow == bidTime)
+                    { monitor.BroadcastGavel(state3); }
+                    else
+                    { bidTime = timeNow; }
+                }
+            }
+           
+         
+        }
 
         public void HandleClient()
         {
-            string bid ;
+            Thread gavelThread;
+            string bid;
             NetworkStream networkStream;
             StreamReader streamreader;
             StreamWriter streamwriter;
@@ -44,10 +73,14 @@ namespace AuctionHouseServer
             clientIpAdressString = clientIpAdress.ToString();
             clientName = GetMachineNameFromIPAddress(clientIpAdressString);
             Thread.CurrentThread.Name = clientName;
+            string state1 = "First";
+            string state2 = "Second";
+            string state3 = "Third. Sold to " + clientName;
+
 
             streamwriter.WriteLine(tv.Name);
-           streamwriter.WriteLine(tv.StartPrice);
-           streamwriter.WriteLine(tv.CurrPrice);
+            streamwriter.WriteLine(tv.StartPrice);
+            streamwriter.WriteLine(tv.CurrPrice);
             this.monitor.AddClients(streamwriter);
             this.monitor.BroadcastBid(clientIpAdressString, "joined");
 
@@ -55,18 +88,21 @@ namespace AuctionHouseServer
             {
                 int currentBid = 0;
                 bid = streamreader.ReadLine();
-               
+                TimeSpan actualTime;
                 if (bid == null)
                     break;
-                    
-                if (int.TryParse(bid,out currentBid)) 
+
+                if (int.TryParse(bid, out currentBid))
                 {
                     if (currentBid > tv.CurrPrice)
                     {
                         tv.CurrPrice = monitor.NewHighestBid(currentBid);
                         monitor.BroadcastBid(Thread.CurrentThread.Name, bid + " Kr.");
+                        actualTime = DateTime.Now.TimeOfDay;
+                        
+
+                        startGavel(actualTime);
                        
-                       // monitor.Gavel(currentBid);
                     }
                     else
                     {
@@ -79,8 +115,8 @@ namespace AuctionHouseServer
                     streamwriter.WriteLine("Sever says: Invalid Bid. Must enter digits only");
                     streamwriter.Flush();
                 }
-                   
-                
+
+
                 Console.WriteLine(Thread.CurrentThread.Name + "  " + bid);
             }
 
@@ -90,7 +126,7 @@ namespace AuctionHouseServer
             streamwriter.Close();
             streamreader.Close();
             networkStream.Close();
-            
+
         }
         private static string GetMachineNameFromIPAddress(string ipAdress)
         {
@@ -107,6 +143,6 @@ namespace AuctionHouseServer
             }
             return machineName;
         }
-        
+
     }
 }
