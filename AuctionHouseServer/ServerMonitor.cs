@@ -7,19 +7,23 @@ using System.IO;
 
 namespace AuctionHouseServer
 {
+   
     class ServerMonitor
     {
+        public event ResetGavelDelegate ResetGavelDelegate;
         private List<StreamWriter> streamWriters;
         private int highestBid;
         private object door;
-        int count = 0;
-        TimeSpan bidTime;
+        private int secondsSinceLastGavel;
+        int gavelNo;
 
 
         public ServerMonitor()
         {
             streamWriters = new List<StreamWriter>();
             highestBid = 0;
+            this.gavelNo = 0;
+            this.secondsSinceLastGavel = 0;
         }
 
         public void AddClients(StreamWriter streamWriter)
@@ -88,70 +92,20 @@ namespace AuctionHouseServer
                     Monitor.PulseAll(this.door);
                 }
                 return currentBid;
+                
             }
-
         }
 
-       
-
-        //public string Gavel(int currBid)
-        //{
-
-        //    lock (this.door)
-        //    {
-
-        //        if (highestBid == currBid)
-        //        {
-
-        //            Monitor.Wait(this.door, 3000);
-                    
-        //        }
-        //        if (currBid > highestBid)
-        //        {
-        //            Monitor.PulseAll(this.door);
-        //        }
-
-        //    }
-        //     return "First";
-        //}
-        //public string Gavel2(int currBid)
-        //{
-
-        //    lock (this.door)
-        //    {
-
-        //        if (highestBid == currBid)
-        //        {
-
-        //            Monitor.Wait(this.door, 3000);
-                    
-        //        }
-        //        if (currBid > highestBid)
-        //        {
-        //            Monitor.PulseAll(this.door);
-        //        }
-        //       return "Second";
-        //    }
-        //}
-        //public string Gavel3(int currBid)
-        //{
-
-        //    lock (this)
-        //    {
-
-        //       if (highestBid == currBid)
-        //        {
-
-        //            Monitor.Wait(this, 3000);                   
-        //        }
-        //        if (currBid > highestBid)
-        //        {
-        //            Monitor.PulseAll(this);
-
-        //        }
-        //        return "Third.Sold to:" + Thread.CurrentThread.Name + " for " + currBid;
-        //    }
-        //}
+    public int GavelNo
+        {
+            get { return gavelNo; }
+            set { gavelNo = value; }
+        } 
+        public int SecondsSinceLastGavel
+        {
+            get { return secondsSinceLastGavel; }
+            set { secondsSinceLastGavel = value; }
+        }
     }
 }
 

@@ -1,19 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading;
 using System.Net;
 using System.Net.Sockets;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 using System.IO;
 
 namespace AuctionHouseServer
 {
     class ServerMain
     {
+        
+        public event ResetGavelDelegate ResetGavelEvent;
         private const int PORT = 5000;
         static void Main(string[] args)
-        {   
+        {
+            
             IPEndPoint port;
             Thread clientThread;
             ServerThreadMethods serverThreadMethod;

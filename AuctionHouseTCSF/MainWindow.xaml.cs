@@ -66,7 +66,7 @@ namespace AuctionHouseTCSF
             string a = bid;
             string b = string.Empty;
             int val = 0;
-            int c = 0;
+           
 
             for (int i = 0; i < a.Length; i++)
             {
